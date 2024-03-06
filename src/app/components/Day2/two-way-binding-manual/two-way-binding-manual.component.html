@@ -1,0 +1,10 @@
+<p>two-way-binding-manual works!</p>
+<input #myInput type="text" (input)="changeValue(myInput.value)">
+<div class="bg-light p-2">
+  {{InputValue}}
+</div>
+<br>
+<button (click)="Count()">Count</button>
+<div>
+  {{counter}}
+</div>

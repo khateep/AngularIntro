@@ -1,0 +1,21 @@
+<p>two-way-binding-with-forms-module works!</p>
+<form>
+  <input
+    type="text"
+    placeholder="Enter Your Name"
+    [(ngModel)]="name"
+    name="name"
+  />
+  <input
+    type="number"
+    placeholder="Enter Your Age"
+    [(ngModel)]="age"
+    name="age"
+  /><!--twoway binding event&property binding-->
+  <select [(ngModel)]="course" name="course">
+    <option value="1">HTML</option>
+    <option>CSS</option>
+    <option>JS</option>
+  </select>
+</form>
+<div>{{ name }},{{ age }},{{ course }}</div>

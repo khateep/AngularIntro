@@ -1,0 +1,103 @@
+<form class="row g-3" (submit)="addStudent()">
+  <div class="col-md-4">
+    <label for="validationServer01" class="form-label">First name</label>
+    <input
+      [(ngModel)]="name"
+      name="name"
+      type="text"
+      class="form-control"
+      id="validationServer01"
+      required
+      [ngClass]="{
+        'is-valid': nameValidation,
+        'is-invalid' : !nameValidation && nameTouched
+      }"
+    />
+    <div class="valid-feedback">Looks good!</div>
+    <div class="invalid-feedback">Name must be more than 4 letters</div>
+  </div>
+  <div class="col-md-4">
+    <label for="validationServer02" class="form-label">Age</label>
+    <input
+      [(ngModel)]="age"
+      name="age"
+      type="number"
+      class="form-control"
+      id="validationServer02"
+      required
+      [ngClass]="{
+        'is-valid': ageValidation,
+        'is-invalid' : !ageValidation && ageTouched
+      }"
+    />
+    <div class="valid-feedback">Looks good!</div>
+    <div class="invalid-feedback">Age must be from 10 to 17 years old!</div>
+  </div>
+  <div class="col-md-3">
+    <label for="validationServer04" class="form-label">City</label>
+    <select
+      class="form-select"
+      id="validationServer04"
+      name="address"
+      [(ngModel)]="address"
+      required
+      #addressInput="ngModel"
+      [ngClass]="{
+        'is-valid': addressInput.valid && addressInput.touched,
+        'is-invalid': !addressInput.valid && addressInput.touched
+      }"
+    >
+      <option selected disabled value="">Choose...</option>
+      <option disabled value="null">null</option>
+      <option value="Giza">Giza</option>
+      <option value="Cairo">Cairo</option>
+      <option value="Alx">Alx</option>
+    </select>
+    <div class="invalid-feedback" *ngIf="!addressInput.valid && addressInput.touched">
+      Please select a valid city (Alx, Cairo, or Giza).
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <label for="validationServer03" class="form-label">Phone Number</label>
+    <input
+      [(ngModel)]="phoneNumber"
+      name="phoneNumber"
+      type="text"
+      class="form-control"
+      id="validationServer03"
+      required
+      pattern="^(010|012|015)\d{8}$"
+      [ngClass]="{
+        'is-valid': phoneNumberValidation,
+        'is-invalid' : !phoneNumberValidation && phoneNumberTouched
+      }"
+    />
+    <div class="valid-feedback">Looks good!</div>
+    <div class="invalid-feedback">Please enter a valid phone number (010, 012, or 015) with 11 digits.</div>
+  </div>
+
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Submit form</button>
+  </div>
+</form>
+<hr>
+<br>
+<table class="table mt-4">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">City</th>
+      <th scope="col">Phone Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students">
+      <td>{{ student.name }}</td>
+      <td>{{ student.age }}</td>
+      <td>{{ student.address }}</td>
+      <td>{{ student.phoneNumber }}</td>
+    </tr>
+  </tbody>
+</table>

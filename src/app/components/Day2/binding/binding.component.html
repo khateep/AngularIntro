@@ -1,0 +1,13 @@
+<p>binding works!</p>
+<!--Event Binder-->
+<input #nameIn type="text" placeholder="Enter Your Name" class="form-control" (input)="printVal($event)">
+<br>
+<!--Element Reference-->
+<!--
+<input #ageIn type="number" placeholder="Enter Your Age" class="form-control" (input)="printAge(ageIn)">
+-->
+<input #ageIn type="number" placeholder="Enter Your Age" class="form-control" (input)="printAge(ageIn.value)">
+<br>
+<button class="btn btn-success" (click)="printMessage()">Log Message</button>
+<button class="btn btn-success" (click)="printValues()">Print Values</button>
+

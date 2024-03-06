@@ -1,0 +1,62 @@
+<p>directives works!</p>
+
+<button class="btn btn-warning" (click)="changeState()">Toggle</button>
+<div class="bg-dark text-light p-4" *ngIf="isAccepted; else ourElse">
+  <h1>welcome to student form</h1>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt totam, cum
+    ullam ratione in, doloribus magni voluptates a tenetur est et. Nobis,
+    aliquid fugiat? Quisquam, assumenda! Reprehenderit maiores repellendus
+    vitae.
+  </p>
+</div>
+
+<ng-template #ourElse>
+  <div class="bg-light text-dark p-4" *ngIf="!isAccepted">
+    <h1>Sorry try another time</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex impedit
+      libero minus deleniti tempora repellendus illo pariatur corrupti cum odio
+      neque, quibusdam reiciendis ut esse. Modi amet fuga esse provident.
+    </p>
+  </div>
+</ng-template>
+<hr />
+<div
+  class="card"
+  style="width: 18rem"
+  *ngFor="let track of tracks; let i = index"
+>
+  <div class="card-body">
+    <p class="card-text">{{ i + 1 }}: {{ track }}</p>
+  </div>
+</div>
+<hr />
+<select [(ngModel)]="track">
+  <option>null</option>
+  <option>.Net</option>
+  <option>MEARN</option>
+  <option>PHP</option>
+</select>
+<h1>Welcome in Track</h1>
+<div [ngSwitch]="track">
+  <p *ngSwitchCase="'.Net'">.Net</p>
+  <p *ngSwitchCase="'MEARN'">MEARN</p>
+  <ng-container *ngSwitchCase="'PHP'">
+    <h3>PHP</h3>
+    <p>This Track Is nearly Full</p>
+  </ng-container>
+  <p *ngSwitchDefault>Try another Time</p>
+</div>
+<hr>
+<h1>Attribute Directives</h1>
+<button class="btn btn-warning" (click)="changeState()">Toggle</button>
+
+<p [ngClass]="{
+  red: isAccepted,
+  black: isAccepted,
+  'p-3': isAccepted
+}">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+   Obcaecati quisquam pariatur omnis quaerat suscipit. Nobis inventore culpa, at exercitationem
+  eius assumenda optio! Cupiditate et quasi, placeat
+   voluptatibus suscipit quo quidem?</p>
